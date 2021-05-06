@@ -1,0 +1,36 @@
+.add-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  margin: 0 auto;
+  width: 320px;
+  height: 36px;
+  background-color: #f9f9f9;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  transition: .3s;
+}
+
+.add-button:focus {
+  outline-color: #2be080;
+}
+
+@media screen and (min-width: 768px) {
+  .add-button {
+    cursor: pointer;
+  }
+
+  .add-button:hover {
+    opacity: .6;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .add-button {
+    width: 240px;
+  }
+}

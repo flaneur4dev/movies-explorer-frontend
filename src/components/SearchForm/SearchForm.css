@@ -1,0 +1,141 @@
+.search-form {
+  display: flex;
+  padding: 80px 70px 50px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.search-form__wrapper {
+  flex: 1;
+  border: 0;
+  margin: 0 10px 0 0;
+  padding: 0;
+}
+
+.search-form__input {
+  width: 100%;
+  padding: 15px 22px;
+  margin: 0 0 30px;
+  border-radius: 4px;
+  border: none;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.search-form__input::placeholder {
+  color: #a0a0a0;
+}
+
+.search-form__label {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.search-form__check {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.search-form__pseudo-check {
+  display: inline-block;
+  margin-right: 12px;
+  position: relative;
+  width: 36px;
+  height: 20px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  background-color: #ebebeb;
+  border-radius: 20px;
+  transition: .3s;
+}
+
+.search-form__pseudo-check::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  transition: .3s;
+}
+
+.search-form__check:focus + .search-form__pseudo-check {
+  box-shadow: 0 0 0 2px #2be080;
+}
+
+.search-form__check:checked + .search-form__pseudo-check {
+  background-color: #2be080;
+}
+
+.search-form__check:checked + .search-form__pseudo-check::after {
+  left: 18px;
+  background-color: #fff;
+}
+
+.search-form__button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 70px;
+  height: 44px;
+  padding: 0;
+  color: #fff;
+  background-color: #3456f3;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.search-form__button[disabled] {
+  color: #c2c2c2;
+  background-color: #f8f8f8;
+  cursor: default;
+}
+
+.search-form__input,
+.search-form__button:focus {
+  outline-color: #2be080;
+}
+
+@media screen and (max-width: 768px) {
+  .search-form {
+    padding: 80px 30px 40px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .search-form {
+    padding: 80px 14px 40px;
+  }
+
+  .search-form__input {
+    padding: 13px 16px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .search-form__button {
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  .search-form__button:not([disabled]):hover {
+    opacity: .85;
+  }
+}
