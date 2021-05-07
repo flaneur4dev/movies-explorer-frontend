@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  color: #000;
+  background-color: #fff;
+  font-family: Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+.page__section {
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.section-title {
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #000;
+}
