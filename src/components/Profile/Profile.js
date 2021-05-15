@@ -1,13 +1,12 @@
-import { memo, useState, useRef, useEffect } from "react";
-import { useHistory } from 'react-router-dom';
+import { memo, useState, useRef, useEffect, useContext } from "react";
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 import './Profile.css';
 
-function Profile() {
-  // времянка
-  const { push } = useHistory();
-  
-  const [user, setUser] = useState({ name: 'Виталий', email: 'pochta@yandex.ru' });
+function Profile(props) {
+  const { name, email } = useContext(CurrentUserContext);
+
+  const [user, setUser] = useState({ name, email });
   const [isEditable, setIsEditable] = useState(false);
 
   const inputRef = useRef();
@@ -24,13 +23,20 @@ function Profile() {
   }
 
   function handleInputChange({ target }) {
-    setUser(prevUser => ({ ...prevUser, [target.name]: target.value }))
+    setUser(prevUser => ({ ...prevUser, [target.name]: target.value }));
+    props.handleChange(target)
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    props.onUpdateUser(user);
+    setIsEditable(prevState => !prevState);
   }
 
   return (
     <section className="profile">
-      <h2 className="profile__title">Привет, Виталий!</h2>
-      <form className="profile__form" id="profile-form" name="profile-form" noValidate>
+      <h2 className="profile__title">Привет, {name}!</h2>
+      <form className="profile__form" id="profile-form" name="profile-form" onSubmit={handleSubmit} noValidate>
         <fieldset className="profile__wrapper">
           <label className="profile__label">
             Имя
@@ -75,15 +81,15 @@ function Profile() {
           <button
             className="profile__button profile__button_red"
             type="button"
-            onClick={() => push('/')}
+            onClick={props.onSignOut}
           >
             Выйти из аккаунта
           </button>
         </div>
 
         <div className={`profile__container${!isEditable ? ' profile__container_hidden' : ''}`}>
-          <p className="profile__errors">Тут будут сообщения с ошибками.</p>
-          <button className="auth__button" type="submit" disabled={false}>Сохранить</button>
+          <p className="auth__errors">{props.info}</p>
+          <button className="auth__button" type="submit" disabled={props.isDisabled}>Сохранить</button>
         </div>
       </form>
     </section>

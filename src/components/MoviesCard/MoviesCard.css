@@ -24,7 +24,6 @@
   margin: 0;
   padding: 0 8px 0 0;
   flex: 1;
-  /* color: #000; */
   font-size: 13px;
   font-weight: 500;
   line-height: 1.2;
@@ -57,6 +56,10 @@
 
 .movie-card__button_red {
   background-image: url(../../images/icon__red-heart.svg);
+}
+
+.movie-card__button_delete {
+  background-image: url(../../images/icon__delete_card.svg);
 }
 
 .movie-card__duration {
