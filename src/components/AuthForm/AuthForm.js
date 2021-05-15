@@ -1,18 +1,28 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from '../Logo/Logo';
 
 import './AuthForm.css';
 
 function AuthForm(props) {
+  const [inputValue, setInputValue] = useState({});
+
+  function handleInputChange({ target }) {
+    setInputValue(prevState => ({ ...prevState, [target.name]: target.value }));
+    props.handleChange(target)
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    props.onSubmit(inputValue)
+  }
 
   return (
     <section className="auth">
       <Logo isMobile={true} />
       <h2 className="auth__title">{props.title}</h2>
 
-      {/* <form className="auth__form" id="auth-form" name="auth-form" onSubmit={handleSubmit} noValidate> */}
-      <form className="auth__form" id="auth-form" name="auth-form" noValidate>
+      <form className="auth__form" id="auth-form" name="auth-form" onSubmit={handleSubmit} noValidate>
         <fieldset className="auth__wrapper">
           {props.isRegister &&
             <label className="auth__label">
@@ -24,10 +34,10 @@ function AuthForm(props) {
                 name="name"
                 pattern="^[а-яёЁА-Я\w,.-]+(\s[а-яёЁА-Я\w,.-]+)*"
                 required
-              // value={inputValue.email || ''}
-              // onChange={handleInputChange}
+                value={inputValue.name || ''}
+                onChange={handleInputChange}
               />
-              {/* <span className="popup__input-error">{inputValue.email ? props.errors.email : ''}</span> */}
+              <p className="auth__input-error">{inputValue.name ? props.errors.name : ''}</p>
             </label>
           }
 
@@ -40,10 +50,10 @@ function AuthForm(props) {
               name="email"
               pattern="^[\w.-]{2,}@([\w-]{2,}\.)+[\w-]{2,}"
               required
-            // value={inputValue.email || ''}
-            // onChange={handleInputChange}
+              value={inputValue.email || ''}
+              onChange={handleInputChange}
             />
-            {/* <span className="popup__input-error">{inputValue.email ? props.errors.email : ''}</span> */}
+            <p className="auth__input-error">{inputValue.email ? props.errors.email : ''}</p>
           </label>
 
           <label className="auth__label">
@@ -55,14 +65,17 @@ function AuthForm(props) {
               name="password"
               pattern="^\w{8,16}"
               required
-            // value={inputValue.password || ''}
-            // onChange={handleInputChange}
+              value={inputValue.password || ''}
+              onChange={handleInputChange}
             />
-            {/* <span className="popup__input-error">{inputValue.password ? props.errors.password : ''}</span> */}
+            <p className="auth__input-error">{inputValue.password ? props.errors.password : ''}</p>
           </label>
         </fieldset>
 
-        <button className="auth__button" type="submit" disabled={props.isDisabled}>{props.submitButton}</button>
+        <div className='auth__container'>
+          <p className="auth__errors">{props.info}</p>
+          <button className="auth__button" type="submit" disabled={props.isDisabled}>{props.submitButton}</button>
+        </div>
       </form>
 
       <footer className="auth__footer">

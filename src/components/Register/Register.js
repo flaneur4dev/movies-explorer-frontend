@@ -1,7 +1,7 @@
 import { memo } from "react";
 import AuthForm from "../AuthForm/AuthForm";
 
-const Register = () => (
+const Register = props => (
   <AuthForm
     title="Добро пожаловать!"
     submitButton="Зарегистрироваться"
@@ -9,7 +9,11 @@ const Register = () => (
     path="/signin"
     welcome="Войти"
     isRegister={true}
-    isDisabled={false}
+    isDisabled={props.isDisabled}
+    errors={props.errors}
+    info={props.info}
+    handleChange={props.handleChange}
+    onSubmit={props.onRegister}
   />
 )
 

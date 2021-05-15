@@ -11,7 +11,7 @@ function Header(props) {
   return (
     <header className={`page__section header${pathname === '/' ? ' header_color' : ''}`}>
       <Logo />
-      {pathname !== '/'
+      {props.isLoggedIn
         ? <>
             <Navigation />
             <button className="header__burger" onClick={props.onOpen} />

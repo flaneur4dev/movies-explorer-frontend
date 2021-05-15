@@ -20,10 +20,10 @@ export const origin = {
     '/saved-movies': true,
     '/profile': true
   },
-  movies: {
-    '/movies': true,
-    '/saved-movies': true
-  }
+  // movies: {
+  //   '/movies': true,
+  //   '/saved-movies': true
+  // }
 }
 
 const errorMessage = {

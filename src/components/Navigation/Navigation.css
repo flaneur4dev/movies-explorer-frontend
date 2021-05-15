@@ -16,6 +16,10 @@
   line-height: 1.2;
 }
 
+.navigation__link_color {
+  color: #fff;
+}
+
 .navigation__link_active {
   font-weight: 500;
 }
